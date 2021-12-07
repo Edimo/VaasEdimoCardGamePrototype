@@ -1,0 +1,2 @@
+# VaasEdimoCardGamePrototype
+Card Game prototype
