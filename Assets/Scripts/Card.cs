@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card 
+public class Card : MonoBehaviour
 {
     public Text nameText;
     public Text costText;
@@ -22,14 +22,17 @@ public class Card
     public Sprite cardSprite;
     public GameObject cardPrefab;
 
-    public void Start()
-    {
-        SetUI();
-        //cardPrefab = this; autoreference ?
-    }
 
-    public void Update()
+    public Card(int Id, string CardName, int Cost, int Power, string CardDescription, Sprite CardImage, GameObject CardPrefab)
     {
+        this.id = Id;
+        this.cardName = CardName;
+        this.cost = Cost;
+        this.power = Power;
+        this.cardDescription = CardDescription;
+        this.cardPrefab = CardPrefab;
+
+        cardSprite = CardImage;
 
     }
 
@@ -66,9 +69,26 @@ public class Card
     public void SetUI()
     {
         nameText.text = "" + this.cardName;
-        costText.text = "" + this.cost;
+        //costText.text = "" + this.cost;
         powerText.text = "" + this.power;
         descriptionText.text = "" + this.cardDescription;
         cardImage.sprite = this.cardSprite;
+    }
+
+    public void SetUI(CardSO card)
+    {
+        nameText.text = "" + card.cardName;
+        costText.text = "" + card.cost;
+        powerText.text = "" + card.power;
+        descriptionText.text = "" + card.cardDescription;
+        cardImage.sprite = card.cardImage;
+    }
+
+    public void SetUI(EnemySO enemy)
+    {
+        nameText.text = "" + enemy.enemyName;
+        powerText.text = "" + enemy.power;
+        descriptionText.text = "" + enemy.enemyDescription;
+        cardImage.sprite = enemy.enemyImage;
     }
 }

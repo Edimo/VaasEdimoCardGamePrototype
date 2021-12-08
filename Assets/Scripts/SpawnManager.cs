@@ -6,12 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyCardPrefab;
     public GameObject alliedCardPrefab;
-    //public CardDataBaseSO cardsDB;
-    //public EnemyDataBase enemiesDB;
+    public CardDataBaseSO cardsDB;
+    public EnemyDataBase enemiesDB;
     public CardManager cardManager;
     private boardManager boardManager;
 
-    // Start is called before the first frame update
+
     public void Start()
     {
         //boardManager = new boardManager();
@@ -66,7 +66,16 @@ public class SpawnManager : MonoBehaviour
         {
             GameObject enn = Instantiate(enemyCardPrefab, new Vector2(0, 0), Quaternion.identity);
             enn.transform.SetParent(boardManager.enemyZone.transform, false);
-            enn.GetComponent<Card>().id = enemySelected;
+            enn.GetComponent<Card>().SetUI(cardManager.GetEnemyById(enemySelected));
         }        
+    }
+
+    public void OnDrawCardButton()
+    {
+        GameObject cardInHand = Instantiate(alliedCardPrefab, new Vector2(0, 0), Quaternion.identity);
+        //playerHand.Add(cardInHand);
+        cardInHand.transform.SetParent(boardManager.playerZone.transform, false);
+
+        cardInHand.GetComponent<Card>().SetUI(cardManager.GetCardById(cardManager.GetRandomCard(cardManager.playerCards).id));
     }
 }

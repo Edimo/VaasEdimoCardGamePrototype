@@ -16,8 +16,7 @@ public class boardManager : MonoBehaviour
 
     public void Start()
     {
-        playerZone = GameObject.Find("PlayerZone");
-        enemyZone = GameObject.Find("MonsterZone");
+
         board playerBoard = new board(playerBoardSize, playerZone);
         board enemyBoard = new board(enemyBoardSize, enemyZone);
     }

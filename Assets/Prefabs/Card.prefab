@@ -792,9 +792,10 @@ GameObject:
   - component: {fileID: 1967330797908823862}
   - component: {fileID: 1967330797908823860}
   - component: {fileID: 1967330797908823863}
-  - component: {fileID: 1967330797908823861}
   - component: {fileID: 5187685573685054625}
   - component: {fileID: 119675611885426087}
+  - component: {fileID: -1026499474220159457}
+  - component: {fileID: 2163043415866638640}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -860,24 +861,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1967330797908823861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967330797908823857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafad734dce11204096d3def7b15d669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  importId: 1
-  nameText: {fileID: 1967330797630215480}
-  costText: {fileID: 1967330797452442581}
-  powerText: {fileID: 1967330797013132612}
-  descriptionText: {fileID: 1967330796446310829}
-  cardImage: {fileID: 1967330796907430023}
 --- !u!114 &5187685573685054625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,3 +918,42 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &-1026499474220159457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967330797908823857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ffc753d72a6a8f4eb7d25f7c67c5b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2163043415866638640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967330797908823857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cdaf6d0483dd44ebf7684df4c9188f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 1967330797630215480}
+  costText: {fileID: 1967330797452442581}
+  powerText: {fileID: 1967330797013132612}
+  descriptionText: {fileID: 1967330796446310829}
+  cardImage: {fileID: 1967330796907430023}
+  id: 0
+  onBoardId: 0
+  lvl: 0
+  cardName: 
+  hp: 0
+  cost: 0
+  power: 0
+  cardDescription: 
+  cardSprite: {fileID: 0}
+  cardPrefab: {fileID: 0}

@@ -132,7 +132,7 @@ public class CardManager : MonoBehaviour
         int cardsPower = 0;
         foreach (int cardId in cardIdList)
         {
-            cardsPower += GetCardById(cardId).power;
+            cardsPower += GetEnemyById(cardId).power;
         }
         return cardsPower;
     }

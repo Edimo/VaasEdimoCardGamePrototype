@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCardPrefab: {fileID: 2069929536629316867, guid: 25cb2a99b996a46428f9c6de030df71b, type: 3}
   alliedCardPrefab: {fileID: 1967330797908823857, guid: 4064f14f99ab86047b300c85e28a00cd, type: 3}
+  cardsDB: {fileID: 0}
+  enemiesDB: {fileID: 0}
   cardManager: {fileID: 0}
 --- !u!4 &28542470
 Transform:
@@ -167,7 +169,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43606600
 GameObject:
@@ -1211,8 +1213,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1940911472}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 28542469}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
         m_MethodName: OnDrawCardButton
         m_Mode: 1
         m_Arguments:
@@ -1407,6 +1409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCards: []
   enemiesCards: []
+  allCards: []
   cardsDB: {fileID: 11400000, guid: 154489c4ba309cf478e7ab7fdb58e78d, type: 2}
   enemiesDB: {fileID: 11400000, guid: 79e63ef82825ec04ca0f05bbc4ffba82, type: 2}
 --- !u!4 &1580358698
@@ -1421,7 +1424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637129555
 GameObject:
@@ -1698,5 +1701,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

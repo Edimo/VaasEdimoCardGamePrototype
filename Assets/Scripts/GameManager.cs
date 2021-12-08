@@ -138,15 +138,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EndTurn());
     }
 
-    public void OnDrawCardButton()
-    {
-        GameObject cardInHand = Instantiate(spawnManager.alliedCardPrefab, new Vector2(0, 0), Quaternion.identity);
-        playerHand.Add(cardInHand);
-        cardInHand.transform.SetParent(playerHandZone.transform, false);
-        //cardInHand.GetComponent<CardImporter>().importId = Random.Range(0, cardsDB.allCards.Count);
-
-        cardInHand.GetComponent<Card>().id = spawnManager.cardManager.GetRandomCard(spawnManager.cardManager.playerCards).id;
-    }
 
     public IEnumerator EndTurn()
     {
