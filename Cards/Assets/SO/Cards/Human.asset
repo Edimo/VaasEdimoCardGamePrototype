@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9870861856da6a4ab56b12eb53d0b09, type: 3}
+  m_Name: Human
+  m_EditorClassIdentifier: 
+  id: 0
+  cardName: Human
+  cost: 0
+  power: 1
+  cardDescription: It's Human.
+  cardImage: {fileID: 21300000, guid: 6a8f910d0e152254484a2775c3d897d1, type: 3}
