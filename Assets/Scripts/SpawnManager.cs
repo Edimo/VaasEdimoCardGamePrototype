@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    //Prefab de la carte ennemie
     public GameObject enemyCardPrefab;
+    //Prefab de la carte alliée
     public GameObject alliedCardPrefab;
+    //Databases de cartes
     public CardDataBaseSO cardsDB;
     public EnemyDataBase enemiesDB;
+    //Managers
     public CardManager cardManager;
     private boardManager boardManager;
 
-
+    /// <summary>
+    /// Lors de start:
+    /// Initialisation des managers utile au fonctionnement du script SpawnManager
+    /// </summary>
     public void Start()
     {
         //boardManager = new boardManager();
@@ -31,6 +38,11 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Recupere un ennemie random dans la liste d'ennemie parmis ceux qui ont le power requis
+    /// </summary>
+    /// <param name="powerRequired">Puissance demandée pour l'ennemie (dérive de la difficultée)</param>
+    /// <returns></returns>
     public int FindSuitableEnemy(int powerRequired)
     {
 
@@ -46,6 +58,11 @@ public class SpawnManager : MonoBehaviour
         return enemy;
     }
 
+    /// <summary>
+    /// Retourne une liste d'ennemies qui représente une vague à la bonne difficultée
+    /// </summary>
+    /// <param name="intensity">Represente la difficultée</param>
+    /// <returns></returns>
     public List<int> BuildEnemiesList(int intensity)
     {
         List<int> enemiesids = new List<int>();
@@ -58,6 +75,10 @@ public class SpawnManager : MonoBehaviour
         return enemiesids;
     }
 
+    /// <summary>
+    /// Fait apparaitre une liste d'ennemies sur le board ennemie
+    /// </summary>
+    /// <param name="intensity">Represente la diffcultée</param>
     public void SpawnEnemies(int intensity)
     {
         List<int> enemiesId = BuildEnemiesList(intensity);
@@ -70,6 +91,9 @@ public class SpawnManager : MonoBehaviour
         }        
     }
 
+    /// <summary>
+    /// Permet de faire apparaitre une carte alliée aléatoire dans la main du joueur
+    /// </summary>
     public void OnDrawCardButton()
     {
         GameObject cardInHand = Instantiate(alliedCardPrefab, new Vector2(0, 0), Quaternion.identity);
