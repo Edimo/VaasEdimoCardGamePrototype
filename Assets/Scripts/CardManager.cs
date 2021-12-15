@@ -15,6 +15,7 @@ public class CardManager : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("Start of Card Manager");
         this.playerCards = cardsDB.allCards;
         this.enemiesCards = enemiesDB.allEnemies;
     }

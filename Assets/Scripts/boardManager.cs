@@ -9,16 +9,17 @@ public class boardManager : MonoBehaviour
 
     public GameObject enemyZone;
 
+    public List<GameObject> cardsOnBoard = new List<GameObject>();
+    public List<GameObject> enemiesOnBoard = new List<GameObject>();
 
-    public int playerBoardSize = 8;
-
-    public int enemyBoardSize = 8;
+    public int maxPlayerBoardSize = 5;
+    public int maxEnemyBoardSize = 5;
 
     public void Start()
     {
-
-        board playerBoard = new board(playerBoardSize, playerZone);
-        board enemyBoard = new board(enemyBoardSize, enemyZone);
+        Debug.Log("Start of Board Manager");
+        board playerBoard = new board(maxPlayerBoardSize, playerZone);
+        board enemyBoard = new board(maxEnemyBoardSize, enemyZone);
     }
 
     public void initiateBoard()

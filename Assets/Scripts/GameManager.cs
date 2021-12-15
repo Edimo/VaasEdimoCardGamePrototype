@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject cardPrefab;
     public GameObject enemyPrefab;
 
-    private TurnState turnState;
+    //private TurnState turnState;
 
 
 
@@ -44,37 +44,30 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 
-        //TEST D INSTANCIATION
-
-        /*GameObject card = Instantiate(cardPrefab, GameObject.Find("Player Hand").GetComponent<Transform>());
-        card.GetComponent<CardImporter>().importId = 2;
-        GameObject enn = Instantiate(enemyPrefab, GameObject.Find("MonsterZone").GetComponent<Transform>());
-        enn.GetComponent<enemyImporter>().importId = 2;*/
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         currentLevel = Random.Range(1, 10);
         Debug.Log(currentLevel);
-        turnState = TurnState.START;
-        StartCoroutine(SetupBattle());
+        //turnState = TurnState.START;
+        //StartCoroutine(SetupBattle());
     }
 
-    public enum TurnState
+    /*public enum TurnState
     {
         START, PLAYERTURN, MONSTERTURN, INVOCTURN, MANAGINGTURN, AWAIT, GAMEOVER
     }
 
     IEnumerator SetupBattle()
     {
-        //Debug.Log("Spawning Enemy");   
+        Debug.Log("Spawning Enemy");   
         yield return new WaitForSeconds(3f);
         spawnManager.SpawnEnemies(currentLevel);
 
         yield return new WaitForSeconds(3f);
         turnState = TurnState.PLAYERTURN;
 
-    }
+    }*/
 
 
     /*public void SpawnEnemies(int intensity)
@@ -131,7 +124,7 @@ public class GameManager : MonoBehaviour
     }*/
 
 
-    public void OnEndTurnButton()
+    /*public void OnEndTurnButton()
     {
         if (turnState != TurnState.PLAYERTURN)
             return;
@@ -161,5 +154,5 @@ public class GameManager : MonoBehaviour
         //if no enemy remaining : call reward function and set state to managing turn
 
     }
-
+    */
 }

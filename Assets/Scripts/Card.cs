@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -90,5 +91,44 @@ public class Card : MonoBehaviour
         powerText.text = "" + enemy.power;
         descriptionText.text = "" + enemy.enemyDescription;
         cardImage.sprite = enemy.enemyImage;
+    }
+
+    public void SetCard(CardSO card)
+    {
+        SetCardStats(card);
+        SetUI(card);
+    }
+
+    private void SetCardStats(CardSO card)
+    {
+        this.id = card.id;
+        this.cardName = card.cardName;
+        this.cost = card.cost;
+        this.power = card.power;
+        this.cardDescription = card.cardDescription;
+
+        cardSprite = card.cardImage;
+    }
+
+    public void SetCard(EnemySO card)
+    {
+        SetCardStats(card);
+        SetUI(card);
+    }
+
+    private void SetCardStats(EnemySO card)
+    {
+        this.id = card.id;
+        this.cardName = card.enemyName;
+        this.hp = card.hp;
+        this.power = card.power;
+        this.cardDescription = card.enemyDescription;
+
+        cardSprite = card.enemyImage;
+    }
+
+    public void Attack(GameObject enemy)
+    {
+        enemy.GetComponent<Card>().hp -= power;
     }
 }
