@@ -10,24 +10,24 @@ public class PlayerHandSpaceHandler : MonoBehaviour
     private int changeChecker;
 
     private GridLayoutGroup gLG;
-    private GameManager gm;
+    private PlayerManager playerManager;
 
     private void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         gLG = GetComponent<GridLayoutGroup>();
         spacer = 0;
-        changeChecker = gm.playerHand.Count;
+        changeChecker = playerManager.cardsInHand.Count;
         increm = 4f;
     }
 
     private void Update()
     {
-        spacer = increm * gm.playerHand.Count;
-        if (changeChecker != gm.playerHand.Count)
+        spacer = increm * playerManager.cardsInHand.Count;
+        if (changeChecker != playerManager.cardsInHand.Count)
         {
             gLG.spacing = new Vector2(gLG.spacing.x - spacer, gLG.spacing.y);
-            changeChecker = gm.playerHand.Count;
+            changeChecker = playerManager.cardsInHand.Count;
             increm -= 0.25f;
         }
 

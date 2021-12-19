@@ -46,7 +46,7 @@ public class DragDrop : MonoBehaviour
 
     public void StartDrag()
     {
-        if (turnManager.turnState == TurnManager.TurnState.PLAYERTURN)
+        if (turnManager.turnState == TurnManager.TurnState.WAIT)
         {
             originalPos = transform.position;
             isDragging = true;
@@ -55,7 +55,7 @@ public class DragDrop : MonoBehaviour
 
     public void EndDrag()
     {
-        if (turnManager.turnState == TurnManager.TurnState.PLAYERTURN)
+        if (turnManager.turnState == TurnManager.TurnState.WAIT)
         {
             if (isOverDropZone && playerManager.CardPlayableVerif(thisCard.cost))
             {

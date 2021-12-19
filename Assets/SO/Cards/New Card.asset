@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9870861856da6a4ab56b12eb53d0b09, type: 3}
-  m_Name: Human
+  m_Name: New Card
   m_EditorClassIdentifier: 
   id: 0
-  cardName: Human
+  cardName: 
   cost: 0
-  power: 1
-  onPlayAbilities: []
-  onDeathAbilities: []
-  onKillAbilities: []
-  type: 2
-  cardDescription: It's Human.
-  cardImage: {fileID: 21300000, guid: 6a8f910d0e152254484a2775c3d897d1, type: 3}
+  power: 0
+  ability: {fileID: 0}
+  cardDescription: 
+  cardImage: {fileID: 0}

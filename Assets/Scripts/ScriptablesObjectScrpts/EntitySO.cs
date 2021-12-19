@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "Assets/Enemy")]
-public class EnemySO : ScriptableObject
+[CreateAssetMenu(fileName = "New Entity", menuName = "Assets/Entities")]
+
+public class EntitySO : ScriptableObject
 {
     public int id;
-    public string enemyName;
-    public int hp;
-    public int lvl;
+    public string cardName;
+    public int cost;
     public int power;
-    public string enemyDescription;
+    public int lvl;
+    public int xp;
+    public int hp;
 
     public List<Ability> onPlayAbilities;
     public List<Ability> onDeathAbilities;
@@ -19,5 +21,7 @@ public class EnemySO : ScriptableObject
 
     public cardtype type;
 
-    public Sprite enemyImage;
+    [TextArea]
+    public string Description;
+    public Sprite Image;
 }

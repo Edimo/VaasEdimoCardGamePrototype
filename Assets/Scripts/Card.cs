@@ -11,6 +11,16 @@ public class Card : MonoBehaviour
     public Text powerText;
     public Text descriptionText;
     public Image cardImage;
+    public Image provocImage;
+    public enum cardtype { ASSASSIN, CASTER, GUNSLINGER, RIDER, SUPPORT, ELDRICH, FIGHTER}
+    public cardtype type;
+    //public EnemySO.cardtype enemyType;
+
+    public List<Ability> onPlayAbilities = new List<Ability>();
+    public List<Ability> onDeathAbilities = new List<Ability>();
+    public List<Ability> onKillAbilities = new List<Ability>();
+    public bool hasProvocation = false;
+
 
     public int id;
     public int onBoardId;
@@ -56,6 +66,7 @@ public class Card : MonoBehaviour
         this.cost = cardSO.cost;
         this.power = cardSO.power;
         this.cardDescription = cardSO.cardDescription;
+        
     }
 
     public Card(EnemySO enemySO)
@@ -106,7 +117,10 @@ public class Card : MonoBehaviour
         this.cost = card.cost;
         this.power = card.power;
         this.cardDescription = card.cardDescription;
-
+        this.onPlayAbilities = card.onPlayAbilities;
+        this.onDeathAbilities = card.onDeathAbilities;
+        this.onKillAbilities = card.onKillAbilities;
+        //this.type = card.type;
         cardSprite = card.cardImage;
     }
 
@@ -122,13 +136,34 @@ public class Card : MonoBehaviour
         this.cardName = card.enemyName;
         this.hp = card.hp;
         this.power = card.power;
+        //this.enemyType = card.type;
         this.cardDescription = card.enemyDescription;
 
         cardSprite = card.enemyImage;
     }
 
-    public void Attack(GameObject enemy)
+    public bool Attack(GameObject enemy)
     {
-        enemy.GetComponent<Card>().hp -= power;
+        
+        return(enemy.GetComponent<Card>().TakeDamage(power));
     }
+
+    public bool TakeDamage(int damage)
+    {
+        hp -= damage;
+        return (CheckIfAlive());
+    }
+
+    public bool CheckIfAlive()
+    {
+        if(hp <= 0)
+        {
+            Debug.Log(name + " is dead");
+            //ResolveDeathAbilities();
+            //Destroy(gameObject);
+            return (false);
+        }
+        return true;
+    }
+
 }

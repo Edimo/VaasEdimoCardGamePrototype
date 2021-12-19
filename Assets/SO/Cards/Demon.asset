@@ -16,5 +16,11 @@ MonoBehaviour:
   cardName: Demon
   cost: 2
   power: 2
+  onPlayAbilities:
+  - {fileID: 11400000, guid: 38955cc7b5555c045b52c7114f33d90d, type: 2}
+  - {fileID: 11400000, guid: 5bfe53e23a74b5148ba4f5dec23b0be1, type: 2}
+  onDeathAbilities: []
+  onKillAbilities: []
+  type: 5
   cardDescription: It's a Demon
   cardImage: {fileID: 21300000, guid: 081e7b689f8beda44b4401375294929b, type: 3}

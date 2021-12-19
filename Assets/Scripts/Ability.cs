@@ -6,8 +6,12 @@ public class Ability : ScriptableObject
 {
     public new string name;
 
-    public virtual void Activate(GameObject parent)
+    public virtual void Activate()
     {
         
+    }
+    public virtual void Activate(GameObject gameObject)
+    {
+
     }
 }

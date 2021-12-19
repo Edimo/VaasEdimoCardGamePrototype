@@ -31,17 +31,17 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public bool CardPlayableVerif(int cost)
     {
-        if(boardManager.cardsOnBoard.Count >= boardManager.maxPlayerBoardSize)
+        if (boardManager.cardsOnBoard.Count >= boardManager.maxPlayerBoardSize)
         {
             Debug.Log("Board Is Full");
             return false;
         }
-        if(cost > currentEnergy)
+        if (cost > currentEnergy)
         {
             Debug.Log("Not Enough Energy");
             return false;
@@ -53,14 +53,34 @@ public class PlayerManager : MonoBehaviour
     {
         card.transform.SetParent(GameObject.Find("DropZone").transform, false);
         boardManager.cardsOnBoard.Add(card);
+        ResolveOnPlayAbilities(card);
         currentEnergy -= card.GetComponent<Card>().cost;
         UpdatePlayerUI();
         cardsInHand.Remove(card);
     }
 
+    public void ResolveOnPlayAbilities(GameObject card)
+    {
+        List<Ability> abs = card.GetComponent<Card>().onPlayAbilities;
+        if (abs != null)
+        {
+            foreach (Ability ab in abs)
+            {
+                Debug.Log("Ability found : " + ab.name);
+                ab.Activate();
+                ab.Activate(card);
+            }
+
+        }
+        else
+        {
+            Debug.Log("No ability Found");
+        }
+    }
+
     public IEnumerator DiscardHand()
     {
-        foreach(GameObject cardInhand in cardsInHand)
+        foreach (GameObject cardInhand in cardsInHand)
         {
             yield return new WaitForSeconds(0.5f);
             Destroy(cardInhand);

@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     public CardManager cardManager;
     private boardManager boardManager;
     private PlayerManager playerManager;
+    private Portal portal;
 
 
     public void Start()
@@ -21,6 +22,7 @@ public class SpawnManager : MonoBehaviour
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
         boardManager = GameObject.Find("BoardManager").GetComponent<boardManager>();
         playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        portal = GameObject.Find("Portal").GetComponent<Portal>();
     }
 
     // Update is called once per frame
@@ -60,15 +62,16 @@ public class SpawnManager : MonoBehaviour
         return enemiesids;
     }
 
-    public void SpawnEnemies(int intensity)
+    public void SpawnEnemies()
     {
-        List<int> enemiesId = BuildEnemiesList(intensity);
+        List<int> enemiesId = BuildEnemiesList(portal.intensity);
 
         foreach (int enemySelected in enemiesId)
         {
             GameObject enn = Instantiate(enemyCardPrefab, new Vector2(0, 0), Quaternion.identity);
             enn.transform.SetParent(boardManager.enemyZone.transform, false);
             enn.GetComponent<Card>().SetCard(cardManager.GetEnemyById(enemySelected));
+            portal.SpawnMonsterCost(enn.GetComponent<Card>().power);
             boardManager.enemiesOnBoard.Add(enn);
         }
     }

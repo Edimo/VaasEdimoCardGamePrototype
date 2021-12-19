@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public enum TurnState { START, PLAYERTURN, INVOCTURN, ENEMYTURN, WON, LOST}
+    public enum TurnState { START, PLAYERTURN, WAIT, INVOCTURN, ENEMYTURN, PORTALTURN, WON, LOST}
 
     public TurnState turnState;
 
@@ -24,7 +24,20 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch(turnState)
+        {
+            case TurnState.WON:
+                
+                break;
+            case TurnState.LOST:
+                break;
+            case TurnState.PORTALTURN:
+                Debug.Log("Portal turn combien ?");
+                spawnManager.SpawnEnemies();
+                StartCoroutine(PlayerTurn());
+                turnState = TurnState.PLAYERTURN;
+                break;             
+        }
     }
 
     private IEnumerator SetupBattle()
@@ -32,24 +45,25 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Spawning Enemy");
         yield return new WaitForSeconds(1f);
         //Set on 1 for now, but will need to access the current lvl in gameManager or SpawnManager
-        spawnManager.SpawnEnemies(1);
+        spawnManager.SpawnEnemies();
 
         yield return new WaitForSeconds(3f);
         
-        turnState = TurnState.PLAYERTURN;
-        PlayerTurn();
+
+        StartCoroutine(PlayerTurn());
     }
 
-    private void PlayerTurn()
+    private IEnumerator PlayerTurn()
     {   
-        StartCoroutine(spawnManager.DrawNewHand());
-        playerManager.currentEnergy = playerManager.maxEnergy;       
+        yield return StartCoroutine(spawnManager.DrawNewHand());
+        playerManager.currentEnergy = playerManager.maxEnergy;
+        turnState = TurnState.WAIT;
         Debug.Log("Your Turn To Play !");
     }
 
     public void OnEndTurnButton()
     {
-        if (turnState != TurnState.PLAYERTURN)
+        if (turnState != TurnState.WAIT)
             return;
         StartCoroutine(EndTurn());
     }
@@ -59,9 +73,9 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Ending turn...");
         //discard
         
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(playerManager.DiscardHand());
+        yield return StartCoroutine(playerManager.DiscardHand());
+        Debug.Log("Discard Hand is done");
         turnState = TurnState.INVOCTURN;
-        aiManager.ResolveInvocsAttack();
+        aiManager.ResolveInvocsAttackTurn();
     }
 }

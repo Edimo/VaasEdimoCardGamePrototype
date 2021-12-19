@@ -16,5 +16,9 @@ MonoBehaviour:
   cardName: Elf
   cost: 1
   power: 1
+  onPlayAbilities: []
+  onDeathAbilities: []
+  onKillAbilities: []
+  type: 1
   cardDescription: It's an Elf
   cardImage: {fileID: 21300000, guid: 6170e14eee9ecb24aab590fc26e9cfa4, type: 3}
